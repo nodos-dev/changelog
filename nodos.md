@@ -53,10 +53,10 @@ Changelogs from version 1.2.6 to 1.3.0.
     * Action History pane
     * Variables pane for Set/Get variable nodes
     * Native file dialogs for Open/Save graph actions
-    * Option to sort properties in Property Pane in editors.
+    * Option to sort properties in Property Pane in editors
     * Portal On Parent: A single property on parent graph controls multiple child node properties
-    * Option to sort categories in Property Pane in editors.
-    * Option to add new categories in Property Pane in editors.
+    * Option to sort categories in Property Pane in editors
+    * Option to add new categories in Property Pane in editors
     * "Recently opened graphs" pulldown menu
     * Drag-drop of nodes from the Modules Pane to the graph
     * Aliases for nodes in the context menu (e.g., `png` redirects to `ReadImage`)
@@ -85,6 +85,8 @@ Changelogs from version 1.2.6 to 1.3.0.
     * MSVC visualizer for `nosName`.
     * `EngineBuffer` and `EngineString` C++ helper classes for managing Nodos allocated buffers
     * Helper macro (`NOS_DECLARE_FUNCTIONS` & `NOS_ADD_FUNCTION`) for function nodes
+    * Nodos app sample for OpenGL texture sharing
+    * Nodos CLI can now be extended by plugins
 * **Removed (Breaking Changes):**
     * Removed deprecated `OnNodeUpdated` and renamed `OnPartialNodeUpdated` to `OnNodeUpdated`
     * Removed `AsyncRequestSubsystem`
@@ -137,7 +139,7 @@ Changelogs from version 1.2.6 to 1.3.0.
     * **New**
         - Enum arrays
         - Generic `LessThan` and `GreaterThan` nodes
-    * **Changed:** `SetVariable` node now has `OnVariableUpdated` event.
+    * **Changed:** `SetVariable` node now has `OnVariableUpdated` event
     * **Fixed**
         - Array nodes crash or malfunction occasionally
         - Variables are not restored when only `GetVariable` nodes are present
@@ -172,10 +174,11 @@ Changelogs from version 1.2.6 to 1.3.0.
         - `ConditionalTrigger` node
         - `TriggerOnAnyInput` node
         - `TextureMonitor` node
+        - `Host` node to use host device information in node graph
+        - Layout nodes (experimental)
     * **Fixed:** `ReadImage` trying to load network file info in Nodos thread
 * **nos.webcam:**
     * **New:** Webcam output node
     * **Fixed:** Black screen when two same channels are opened
-
 * **nos.webrtc:**
     * **New:** HTTPS support
