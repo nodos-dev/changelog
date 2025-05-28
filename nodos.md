@@ -87,6 +87,7 @@ Changelogs from version 1.2.6 to 1.3.0.
     * Helper macro (`NOS_DECLARE_FUNCTIONS` & `NOS_ADD_FUNCTION`) for function nodes
     * Nodos app sample for OpenGL texture sharing
     * Nodos CLI can now be extended by plugins
+    * Partial named-value updates for both modules and editors
 * **Removed (Breaking Changes):**
     * Removed deprecated `OnNodeUpdated` and renamed `OnPartialNodeUpdated` to `OnNodeUpdated`
     * Removed `AsyncRequestSubsystem`
@@ -95,11 +96,11 @@ Changelogs from version 1.2.6 to 1.3.0.
     * Removed `CanCreateNode`.
     * Renamed `nos.fb.Void` to `nos.Generic`
     * Renamed `GetCurrentItemId` API to `GetCurrentRunnerItemId`
-* **Changed (Breaking Changes):**
+* **Changed:**
     * New major versions for plugin (37), subsystem (11), and process (18) SDKs
-        - Plugin SDK version updated from 36.1.1 to 37.4.1
-        - Subsystem SDK version updated from 10.1.1 to 11.5.0
-        - Process SDK version updated from 15.0.0 to 18.0.0
+        - Plugin SDK version updated from 36.1.1 to 37.5.0
+        - Subsystem SDK version updated from 10.1.1 to 11.6.0
+        - Process SDK version updated from 15.0.0 to 18.1.0
     * Redesigned Node definition & plugin configuration file structures
     * `TemplateParameters` struct now has a `name` field
     * `nos.fb.Track` and `nos.fb.LensDistortion` were removed from built-in types (now in `nos.track`)
@@ -118,7 +119,7 @@ Changelogs from version 1.2.6 to 1.3.0.
 * **New Modules**
     * **nos.animation:** Nodes for animating values on node graph: `Animate`, `AnimationCurve`, `Interpolate`
         - Support for custom interpolators
-    * **nos.sys.variables:** Nodes for managing named variables on node graph: `Get`, `Set`
+    * **nos.sys.variables:** Nodes for managing named variables on node graph: `GetVariable`, `SetVariable`
     * **nos.decklink:** Support for Blackmagic Design Decklink SDI I/O
     * **nos.sys.decklink:** Subsystem for managing DeckLink devices
     * **nos.sys.device:** For managing devices on the system
@@ -140,9 +141,7 @@ Changelogs from version 1.2.6 to 1.3.0.
         - Enum arrays
         - Generic `LessThan` and `GreaterThan` nodes
     * **Changed:** `SetVariable` node now has `OnVariableUpdated` event
-    * **Fixed**
-        - Array nodes crash or malfunction occasionally
-        - Variables are not restored when only `GetVariable` nodes are present
+    * **Fixed:** Array nodes crash or malfunction occasionally
 * **nos.sys.vulkan:**
     * **New**
         - Missing image formats for swapchain
@@ -158,7 +157,6 @@ Changelogs from version 1.2.6 to 1.3.0.
         - `RegisterShader` replaced with `RegisterShader2`
     * **Fixed**
         - Crash on device lost
-        - Variables are not restored when only `GetVariable` nodes are present
         - Possible race conditions when accessing swapchain
         - Unable to load plugins with runtime-compiled shaders without `glslc` on PATH
 * **nos.track:**
