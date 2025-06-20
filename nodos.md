@@ -46,6 +46,11 @@ Changelogs from version 1.2.6 to 1.3.0.
     * Optimized cycle validation during graph compilation for scheduling
     * Optimized cycle validation when creating pin connections
     * Undo/Redo stack not being sent to new editor connections
+    * Frame drops when new editors are connected
+    * Space accumulating in command line parameters of Nodos apps
+    * Frame number not always broadcasted
+    * Optimized procedures during new editor connection requests
+    * Parts of node graph do not execute due to inconsistent frame numbers
 
 ## Editor
 
@@ -67,6 +72,7 @@ Changelogs from version 1.2.6 to 1.3.0.
     * Module status messages are now shown at the top
     * Revamped the Apps pane
     * Limited max node width & added a configuration option
+    * Splash screen timeout shortened
 * **Fixed:**
     * Unable to change a portal pin's display name
     * Engine module status text getting stuck at "unloading"
@@ -76,6 +82,7 @@ Changelogs from version 1.2.6 to 1.3.0.
     * Crash when a log larger than 4096 characters was received
     * Unable to navigate in node graph during live mode
     * Incorrectly showing a property as modified/unmodified in Property Pane sometimes
+    * Item context menus are extending outside of windows
 
 ## SDK
 
@@ -117,6 +124,7 @@ Changelogs from version 1.2.6 to 1.3.0.
 ## Modules
 
 * **New Modules**
+    * **nos.sync:** Subsystem for synchronizing various I/O devices at path starts
     * **nos.animation:** Nodes for animating values on node graph: `Animate`, `AnimationCurve`, `Interpolate`
         - Support for custom interpolators
     * **nos.sys.variables:** Nodes for managing named variables on node graph: `GetVariable`, `SetVariable`
@@ -128,7 +136,9 @@ Changelogs from version 1.2.6 to 1.3.0.
     * **nos.str:** String nodes like `Tokenizer`, `Regex`, `Json2Pin`, `Pin2Json`
     * **nos.rive (Experimental):** For rendering Rive artboards
 * **nos.aja:**
-    * **New:** A new pin manage acquire/release state of the device for exclusive use
+    * **New**
+        - A new pin manage acquire/release state of the device for exclusive use
+        - Add option to enable/disable synchronization with various I/O nodes
     * **Changed:** Device pin now uses `nos.sys.device` for better device management
 * **nos.math:**
     * **Changed:** Removed `Add_f32` and similar nodes & added migrations to `nos.reflect` for Arithmetic nodes
@@ -136,19 +146,24 @@ Changelogs from version 1.2.6 to 1.3.0.
     * **New**
         - `RGBA` to `RGB24` conversion node
         - `GetLumaCoeffs` graph.
+    * **Fixed:** RGB2YCbCr node did not reset interlaced state at path starts
 * **nos.reflect:**
     * **New**
         - Enum arrays
         - Generic `LessThan` and `GreaterThan` nodes
+        - Enums are now showing up in Make/Arithmetic node presets
     * **Changed:** `SetVariable` node now has `OnVariableUpdated` event
-    * **Fixed:** Array nodes crash or malfunction occasionally
+    * **Fixed**
+        - Array nodes crash or malfunction occasionally
+        - Pins with table data types are unable connect to arithmetic nodes
+        - Delay node was delaying `(d - 1)` frames instead of `d` frames
 * **nos.sys.vulkan:**
     * **New**
         - Missing image formats for swapchain
         - GPU device selection & validation layer settings
         - C++ helpers for managing resources & commands
         - Black stock texture option for plugins
-        - Option to use dedicated transfer queues for copy operations over PCI
+        - Option to use dedicated transfer queues for copy operations over PCI (enabled by default)
     * **Changed**
         - Shader nodes now accept array types
         - `CreateResource` now requires a mandatory tag
@@ -159,6 +174,7 @@ Changelogs from version 1.2.6 to 1.3.0.
         - Crash on device lost
         - Possible race conditions when accessing swapchain
         - Unable to load plugins with runtime-compiled shaders without `glslc` on PATH
+        - Device selection improvements for PCs with less GPU capabilities
 * **nos.track:**
     * **New:** `Track`, `CaptureData`, and `LensDistortion` data types (moved from built-in)
     * **Changed**
