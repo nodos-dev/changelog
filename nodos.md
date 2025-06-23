@@ -139,7 +139,10 @@ Changelogs from version 1.2.6 to 1.3.0.
     * **New**
         - A new pin manage acquire/release state of the device for exclusive use
         - Add option to enable/disable synchronization with various I/O nodes
-    * **Changed:** Device pin now uses `nos.sys.device` for better device management
+    * **Changed**
+        - Device pin now uses `nos.sys.device` for better device management
+        - Consistent pin names for I/O graph nodes
+    * **Fixed:** Incorrect readings of firmware date for Corvid44 devices, causing warning messages on AJA nodes
 * **nos.math:**
     * **Changed:** Removed `Add_f32` and similar nodes & added migrations to `nos.reflect` for Arithmetic nodes
 * **nos.mediaio:**
@@ -157,6 +160,7 @@ Changelogs from version 1.2.6 to 1.3.0.
         - Array nodes crash or malfunction occasionally
         - Pins with table data types are unable connect to arithmetic nodes
         - Delay node was delaying `(d - 1)` frames instead of `d` frames
+        - Delay node caused infinite auto-scales when input texture size changed
 * **nos.sys.vulkan:**
     * **New**
         - Missing image formats for swapchain
