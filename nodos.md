@@ -51,6 +51,7 @@ Changelogs from version 1.2.6 to 1.3.0.
     * Frame number not always broadcasted
     * Optimized procedures during new editor connection requests
     * Parts of node graph do not execute due to inconsistent frame numbers
+    * Nodes are stuck in orphan state when graph is loaded during engine startup
 
 ## Editor
 
