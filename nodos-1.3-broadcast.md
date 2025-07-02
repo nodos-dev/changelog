@@ -1,4 +1,4 @@
-# Nodos Broadcast Bundle Changelog
+# What's New In Nodos 1.3 (Broadcast Bundle)
 
 Changelogs from version 1.2.6 to 1.3.0.
 
